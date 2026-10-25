@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joël Web Pro Solution — Solutions digitales professionnelles</title>
+<meta name="description" content="Création de sites e-commerce, prise de rendez-vous, formation en ligne, portfolio, community management et bien plus. Commandez directement sur WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="circuit-overlay" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">J</span>
+      <span class="brand-name">Joël Web Pro <em>Solution</em></span>
+    </a>
+    <nav class="main-nav">
+      <a href="#services">Services</a>
+      <a href="#pourquoi">Pourquoi nous</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-wa header-cta" target="_blank" rel="noopener"
+       href="https://wa.me/{{ wa_number }}?text={{ 'Bonjour Joël, je souhaite en savoir plus sur vos services.' | urlencode }}">
+      <i class="fa-brands fa-whatsapp"></i> Discuter maintenant
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Agence digitale · Cameroun</p>
+      <h1>Votre présence en ligne, construite pour <span class="accent">vendre</span>, pas seulement pour exister.</h1>
+      <p class="hero-lead">
+        Sites e-commerce, rendez-vous en ligne, formations, portfolios et gestion de vos réseaux :
+        une seule adresse pour digitaliser votre activité, du premier clic à la première vente.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" target="_blank" rel="noopener"
+           href="https://wa.me/{{ wa_number }}?text={{ 'Bonjour Joël, je veux discuter de mon projet.' | urlencode }}">
+          <i class="fa-brands fa-whatsapp"></i> Parler à Joël sur WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#services">Voir les services <i class="fa-solid fa-arrow-down"></i></a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong>9+</strong><span>services digitaux</span></li>
+        <li><strong>100%</strong><span>sites sur-mesure</span></li>
+        <li><strong>24/7</strong><span>contact WhatsApp</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="pain" id="pourquoi">
+    <div class="wrap pain-inner">
+      <div class="pain-text">
+        <h2>Ça vous parle ?</h2>
+        <ul class="pain-list">
+          {% for p in pain_points %}
+          <li><i class="fa-solid fa-circle-question"></i><span>{{ p }}</span></li>
+          {% endfor %}
+        </ul>
+        <p class="pain-answer">Alors nous sommes là pour vous.</p>
+        <a class="btn btn-primary" target="_blank" rel="noopener"
+           href="https://wa.me/{{ wa_number }}?text={{ 'Bonjour Joël, j\'ai un problème à régler pour mon activité en ligne.' | urlencode }}">
+          <i class="fa-brands fa-whatsapp"></i> Exposer mon besoin
+        </a>
+      </div>
+      <div class="pain-visual" aria-hidden="true">
+        <div class="pulse-card">
+          <i class="fa-solid fa-bolt"></i>
+          <p>Créer. Optimiser. Développer. Réussir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Nos services</h2>
+        <p>Et bien d'autres prestations du domaine digital, sur simple demande.</p>
+      </div>
+      <div class="services-grid">
+        {% for s in services %}
+        <article class="service-card">
+          <div class="service-icon"><i class="fa-solid {{ s.icon }}"></i></div>
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.text }}</p>
+          <a class="service-link" target="_blank" rel="noopener"
+             href="https://wa.me/{{ wa_number }}?text={{ s.wa_msg | urlencode }}">
+            Commander / Prendre rendez-vous <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+        {% endfor %}
+        <article class="service-card service-card--more">
+          <div class="service-icon"><i class="fa-solid fa-ellipsis"></i></div>
+          <h3>Et bien d'autres services</h3>
+          <p>Un besoin digital qui ne figure pas dans la liste ? Parlons-en, une solution existe probablement.</p>
+          <a class="service-link" target="_blank" rel="noopener"
+             href="https://wa.me/{{ wa_number }}?text={{ 'Bonjour Joël, j\'ai un besoin digital spécifique à vous exposer.' | urlencode }}">
+            Discuter de mon besoin <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Comment ça se passe</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <span class="process-num">1</span>
+          <h3>Vous décrivez votre besoin</h3>
+          <p>Sur WhatsApp, en quelques messages : votre activité, votre objectif, votre budget.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">2</span>
+          <h3>On cadre la solution</h3>
+          <p>Proposition claire, délais et coût annoncés avant de commencer.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">3</span>
+          <h3>On construit</h3>
+          <p>Développement et suivi régulier, avec des points d'avancement.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">4</span>
+          <h3>Vous lancez</h3>
+          <p>Mise en ligne, prise en main et accompagnement après livraison.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-inner">
+      <div>
+        <h2>Prêt à digitaliser votre activité ?</h2>
+        <p>Écrivez directement à Joël sur WhatsApp pour une commande ou un rendez-vous. Réponse rapide, sans détour.</p>
+      </div>
+      <div class="contact-cards">
+        <a class="contact-card" target="_blank" rel="noopener"
+           href="https://wa.me/{{ wa_number }}?text={{ 'Bonjour Joël, je vous contacte depuis votre site.' | urlencode }}">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>{{ phone_display }}</span>
+        </a>
+        <a class="contact-card" href="mailto:{{ email }}">
+          <i class="fa-solid fa-envelope"></i>
+          <span>{{ email }}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>© <span id="year"></span> Joël Web Pro Solution</span>
+    <span class="footer-tagline">Créer · Optimiser · Développer · Réussir</span>
+  </div>
+</footer>
+
+<!-- WhatsApp floating widget -->
+<div class="wa-widget" id="waWidget">
+  <button class="wa-bubble" id="waToggle" aria-label="Ouvrir le chat WhatsApp" aria-expanded="false">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="wa-ping"></span>
+  </button>
+  <div class="wa-panel" id="waPanel" role="dialog" aria-label="Commander sur WhatsApp">
+    <div class="wa-panel-head">
+      <div class="wa-avatar"><i class="fa-solid fa-headset"></i></div>
+      <div>
+        <strong>Joël Web Pro Solution</strong>
+        <span>En ligne · répond rapidement</span>
+      </div>
+      <button class="wa-close" id="waClose" aria-label="Fermer">&times;</button>
+    </div>
+    <div class="wa-panel-body">
+      <p class="wa-bubble-msg">Bonjour 👋 Vous voulez passer une commande ou prendre un rendez-vous ? Choisissez un message pour démarrer la discussion sur WhatsApp.</p>
+      <div class="wa-quick-replies">
+        <a target="_blank" rel="noopener" href="https://wa.me/{{ wa_number }}?text={{ 'Bonjour Joël, je souhaite passer une commande.' | urlencode }}">Passer une commande</a>
+        <a target="_blank" rel="noopener" href="https://wa.me/{{ wa_number }}?text={{ 'Bonjour Joël, je souhaite prendre un rendez-vous.' | urlencode }}">Prendre un rendez-vous</a>
+        <a target="_blank" rel="noopener" href="https://wa.me/{{ wa_number }}?text={{ 'Bonjour Joël, j\'ai une question avant de commander.' | urlencode }}">Poser une question</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
